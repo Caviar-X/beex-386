@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="{{ 'static/style.js' | to_static | safe }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ 'static/style.css' | to_static | safe }}">
+    {%- block html_head -%}
+    {%- endblock -%}
+    {%- if theme_ctx.magic_cursor -%}
+    <script>
+        _386.magicCursor();
+    </script>
+    {%- endif -%}
+    {{- theme_ctx.custom_head | safe -}}
+    <title>
+        {%- block site_title -%}
+        {{- site.title }} | {{ site.tagline -}}
+        {%- endblock -%}
+    </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">{{- site.title -}}</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">&nbsp;<a href="./index.html">Home</a></li>
+                {%- for item in menus.main -%}
+                {%- if item.children -%}
+                <li class="nav-item dropdown">
+                    &nbsp;<a href="{{- item.url | safe -}}" target="_blank">{{- item.title -}}</a>
+                    <div class="dropdown-menu">
+                        {%- for sub_item in item.children -%}
+                        <a class="dropdown-item" href="{{- sub_item.url | safe -}}" target="_blank">{{- sub_item.title -}}</a>
+                        {%- endfor -%}
+                    </div>
+                </li>
+                {%- else -%}
+                <li class="nav-item">&nbsp;<a href="{{- item.url | safe -}}" target="_blank">{{- item.title -}}</a></li>
+                {%- endif -%}
+                {%- endfor -%}
+
+            </ul>
+        </div>
+    </nav>
+    {%- block main_content -%}
+    {%- endblock -%}
+    <footer>
+        {%- block footer -%}
+        <p class="text-muted text-center">Made by {{- site.author -}} with LOVE</p>
+        {%- if theme_ctx.begin_year -%}
+        <p class="text-muted text-center">{{- theme_ctx.begin_year -}}</p>
+        {%- else -%}
+        <p class="text-muted text-center">?</p>
+        {% endif %}
+        <p class="text-muted text-center">|</p>
+        <p id="yrnow" class="text-muted text-center"></p>
+        {%- endblock -%}
+    </footer>
+    <script>
+        var date = new Date(Date.now());
+        document.getElementById("yrnow").innerHTML = date.getFullYear().toString();
+    </script>
+</body>
+
+</html>

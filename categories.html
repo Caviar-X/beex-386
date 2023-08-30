@@ -1,0 +1,29 @@
+{%- extends "layout.html" -%}
+{%- block site_title -%}
+全部分类 | {{- site.title -}}
+{%- endblock -%}
+
+{%- block main_content -%}
+<h1 class="text-console">
+    <p class="text-center"><img src="./static/fonts/terminator.svg" style="width: 16px;">&nbsp;Console</p>
+    <p>~ render site/categories.md </p>
+    <p class="with-loading">Rendering</p>
+    <p>Special page founded</p>
+    <p>Rendering finished</p>
+</h1>
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="page-header">
+            <h1 class="text-center text-primary">全部分类</h1>
+        </div>
+        <div class="jumbotron">
+            {%- for category in categories -%}
+            <a class="resize text-center" href="{{- category.url | safe -}}" target="_blank">{{- category.title -}}</a>
+            <br>
+            <br>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+{%- endblock -%}
