@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="{{ 'static/style.js' | to_static | safe }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ 'static/style.css' | to_static | safe }}">
+    <link rel="icon" href="{{ 'static/favicon.ico' | to_static | safe }}">
     {%- block html_head -%}
     {%- endblock -%}
     {{- theme_ctx.custom_head | safe -}}
@@ -30,15 +31,15 @@
                 {%- for item in menus.main -%}
                 {%- if item.children -%}
                 <li class="nav-item dropdown">
-                    &nbsp;<a href="{{- item.url | safe -}}" target="_blank">{{- item.title -}}</a>
+                    &nbsp;<a href="{{- item.url | safe -}}">{{- item.title -}}</a>
                     <div class="dropdown-menu">
                         {%- for sub_item in item.children -%}
-                        <a class="dropdown-item" href="{{- sub_item.url | safe -}}" target="_blank">{{- sub_item.title -}}</a>
+                        <a class="dropdown-item" href="{{- sub_item.url | safe -}}">{{- sub_item.title -}}</a>
                         {%- endfor -%}
                     </div>
                 </li>
                 {%- else -%}
-                <li class="nav-item">&nbsp;<a href="{{- item.url | safe -}}" target="_blank">{{- item.title -}}</a></li>
+                <li class="nav-item">&nbsp;<a href="{{- item.url | safe -}}">{{- item.title -}}</a></li>
                 {%- endif -%}
                 {%- endfor -%}
 

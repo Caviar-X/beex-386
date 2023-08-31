@@ -15,6 +15,8 @@ local config = {
 
     --prism.js主题名，具体可以参照prismjs.com 默认主题留空即可,
     prism_theme = ''
+
+    --网站icon请将favicon.ico放入网站的static文件夹中
 }
 
 
