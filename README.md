@@ -1,6 +1,6 @@
 ## beex-386
 
-已经可用
+自豪的使用beex作为静态博客生成系统
 
 可能是已知的第一个第三方主题。
 
@@ -11,7 +11,7 @@
 1. 去[这里](http://www.telihai.com/archives/9027/)下载beex
 2. 将本仓库clone至_themes文件夹
 3. 在`config.toml`里的themes一栏改为`beex-386`
-4. 编辑`config.lua`文件
+4. 编辑`main.lua`文件中的全局变量`config`
 5. 愉快的开始写作吧
 
 ## 目前bug/TODOs

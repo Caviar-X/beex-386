@@ -49,15 +49,16 @@
     {%- endblock -%}
     <footer>
         {%- block footer -%}
-        <p class="text-muted text-center">Made by {{ site.author }} with LOVE</p>
+        <p class="text-primary"></p>
+        <p class="text-primary text-center">Made by {{ site.author }} with LOVE</p>
         <p class="text-center">
         {%- if theme_ctx.begin_year -%}
-        <span class="text-muted text-center">{{ theme_ctx.begin_year }}</span>
+        <span class="text-primary text-center">{{ theme_ctx.begin_year }}</span>
         {%- else -%}
         <span class="text-muted text-center">?</span>
         {% endif %}
-        <span class="text-muted text-center">-</span>
-        <span id="yrnow" class="text-muted text-center"></span>
+        <span class="text-primary text-center">-</span>
+        <span id="yrnow" class="text-primary text-center"></span>
         </p>
         {%- endblock -%}
     </footer>

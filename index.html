@@ -1,9 +1,14 @@
 {%- extends 'layout.html' -%}
 
 {%- block html_head -%}
+<!--仅在首页和文章页面加载语法高亮-->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@latest/prism.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@latest/plugins/autoloader/prism-autoloader.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism-twilight.min.css">
+{%- if theme_ctx.prism_theme -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism-{{- theme_ctx.prism_theme -}}.min.css">
+{%- else -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-coy.min.css">
+{%- endif -%}
 {%- endblock -%}
 
 {%- block main_content -%}
@@ -31,7 +36,7 @@
                 <div class="card-header">
                     <a href="{{ archive.url | urlencode | safe }}" target="_blank">{{- archive.title -}}</a>
                     {%- if archive.sticky > 0 -%}
-                    <span class="badage badage-danger">PIN</span>
+                    <span style="background-color: red;">PIN</span>
                     {%- endif -%}
                 </div>
                 <div class="card-body">
