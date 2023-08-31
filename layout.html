@@ -32,7 +32,6 @@
         <a class="navbar-brand" href="#">{{- site.title -}}</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">&nbsp;<a href="./index.html">Home</a></li>
                 {%- for item in menus.main -%}
                 {%- if item.children -%}
                 <li class="nav-item dropdown">
@@ -55,14 +54,16 @@
     {%- endblock -%}
     <footer>
         {%- block footer -%}
-        <p class="text-muted text-center">Made by {{- site.author -}} with LOVE</p>
+        <p class="text-muted text-center">Made by {{ site.author }} with LOVE</p>
+        <p class="text-center">
         {%- if theme_ctx.begin_year -%}
-        <p class="text-muted text-center">{{- theme_ctx.begin_year -}}</p>
+        <span class="text-muted text-center">{{ theme_ctx.begin_year }}</span>
         {%- else -%}
-        <p class="text-muted text-center">?</p>
+        <span class="text-muted text-center">?</span>
         {% endif %}
-        <p class="text-muted text-center">|</p>
-        <p id="yrnow" class="text-muted text-center"></p>
+        <span class="text-muted text-center">-</span>
+        <span id="yrnow" class="text-muted text-center"></span>
+        </p>
         {%- endblock -%}
     </footer>
     <script>

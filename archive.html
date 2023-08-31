@@ -13,7 +13,7 @@
 {%- block main_content -%}
 <div class="container">
     <h1 class="text-console">
-        <p class="text-center"><img src="./static/fonts/terminator.svg" style="width: 16px;">&nbsp;Console</p>
+        <p class="text-center"><img src="{{ 'static/fonts/terminator.svg' | to_static | safe }}" style="width: 16px;">&nbsp;Console</p>
         <p>~ render site/posts/{{- archive.title -}}.md</p>
         <p class="with-loading">Rendering</p>
         <p>information:</p>
@@ -47,9 +47,13 @@
             <br>
             <br>
             <p class="text-center">
+                {%- if archive.next -%}
                 <a class="resize" href="{{ archive.next.url | safe }}" target="_blank"> Next >> {{ archive.next.title }} </a>
+                {%- endif -%}
                 |
+                {%- if archive.previous -%}
                 <a class="resize" href="{{ archive.previous.url | safe }}" target="_blank"> {{ archive.previous.title }} << Previous </a>
+                {%- endif -%}
             </p>
         </div>
     </div>

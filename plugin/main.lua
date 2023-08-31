@@ -12,9 +12,12 @@ local config = {
 }
 
 
-function Theme_context(ctx)
-    ctx.theme_ctx = config
-    return ctx
+function Theme_context(args)
+    args.context.theme_ctx = {
+        magic_cursor = config.magic_cursor,
+        custom_head = config.custom_head,
+        begin_year = config.begin_year
+    }
+    return args
 end
-
 beex:add_filter("gen_before_render_html", "Theme_context")
