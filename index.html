@@ -9,9 +9,11 @@
 {%- block main_content -%}
 <div class="container">
     <h1 class="text-console">
-        <p class="text-center"><img src="{{ 'static/fonts/terminator.svg' | to_static | safe }}" style="width: 16px;">&nbsp;Console</p>
+        <p class="text-center"><img src="{{ 'static/fonts/terminator.svg' | to_static | safe }}"
+                style="width: 16px;">&nbsp;Console</p>
         <p>~ cat site/desc.md</p>
-        <p>Welcome! <br> This site is created by {{ site.author }} with LOVE</p>
+        <p>Welcome!</p>
+        <p>This site is created by {{ site.author }} with LOVE</p>
         <p>~ cat site/tags.md</p>
         {%- for tag in tags -%}
         <p>- <a href="{{ tag.url | urlencode | safe }}" target="_blank">{{- tag.title -}}</a></p>
@@ -36,15 +38,13 @@
                     <h4 class="card-body">
                         tags:
                         {%- for tag in archive.tags -%}
-                        <a href="{{ tag.url | urlencode | safe }}" style="background-color: #707b7c;">{{- tag.title
-                            -}}</a>
+                        <a href="{{ tag.url | urlencode | safe }}" style="background-color: #707b7c;">{{- tag.title -}}</a>
                         {%- endfor -%}
                     </h4>
                     <h4 class="card-body">
                         categories:
                         {%- for category in archive.categories -%}
-                        <a href="{{ category.url | urlencode | safe }}" style="background-color: #707b7c;">{{-
-                            category.title -}}</a>
+                        <a href="{{ category.url | urlencode | safe }}" style="background-color: #707b7c;">{{- category.title -}}</a>
                         {%- endfor -%}
                     </h4>
                     <p class="card-text">
@@ -53,11 +53,27 @@
                     <a class="card-link" href="{{ archive.url | urlencode | safe }}" target="_blank">Read</a>
                     <br>
                     <br>
-                    <div class="card-footer text-muted">{{- archive.created -}}</div>
+                    <div id="time-transfer" class="card-footer text-muted">{{- archive.created -}}</div>
                 </div>
             </div>
         </div>
     </div>
     {%- endfor -%}
+    <!-- transfer RFC time to human readable time -->
+    <script>
+        var time_elements = document.querySelectorAll("#time-transfer");
+        time_elements.forEach(element => {
+            element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
+                'zh-cn',
+                {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                }
+            );
+        });
+    </script>
 </div>
 {%- endblock -%}

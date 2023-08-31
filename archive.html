@@ -17,7 +17,7 @@
         <p>~ render site/posts/{{- archive.title -}}.md</p>
         <p class="with-loading">Rendering</p>
         <p>information:</p>
-        <p>created: {{ archive.created }}</p>
+        <p>created: <span id="time-transfer">{{ archive.created }}</span></p>
         <p>author: {{ site.author }}</p>
         <p>
             tags:
@@ -58,4 +58,19 @@
         </div>
     </div>
 </div>
+<script>
+    var time_elements = document.querySelectorAll("#time-transfer");
+    time_elements.forEach(element => {
+        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
+            'zh-cn',
+            {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            }
+        );
+    });
+</script>
 {%- endblock -%}

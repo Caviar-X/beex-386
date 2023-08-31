@@ -14,11 +14,6 @@
     <link rel="stylesheet" type="text/css" href="{{ 'static/style.css' | to_static | safe }}">
     {%- block html_head -%}
     {%- endblock -%}
-    {%- if theme_ctx.magic_cursor -%}
-    <script>
-        _386.magicCursor();
-    </script>
-    {%- endif -%}
     {{- theme_ctx.custom_head | safe -}}
     <title>
         {%- block site_title -%}
@@ -70,6 +65,11 @@
         var date = new Date(Date.now());
         document.getElementById("yrnow").innerHTML = date.getFullYear().toString();
     </script>
+    {%- if theme_ctx.magic_cursor -%}
+    <script>
+        _386.magicCursor();
+    </script>
+    {%- endif -%}
 </body>
 
 </html>
