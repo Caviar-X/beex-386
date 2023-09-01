@@ -58,7 +58,9 @@ $cyan:     #00aaaad0 !default;
   src: url('./fonts/%E7%82%B9%E9%98%B5%E5%AE%8B%E5%AD%97.woff2.font-woff2') format('woff2');
   font-size-adjust: cap-height 0.645;
 }
-
+.katex-html {
+  display: none;
+}
 *,
 *::before,
 *::after {
