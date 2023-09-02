@@ -1,13 +1,13 @@
 {%- extends 'layout.html' -%}
 
 {%- block html_head -%}
-<!--仅在首页和文章页面加载语法高亮和Katex-->
+<!--仅在首页和文章页面加载语法高亮和katex-->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@latest/prism.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@latest/plugins/autoloader/prism-autoloader.min.js"></script>
 {%- if theme_ctx.prism_theme -%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism-{{- theme_ctx.prism_theme -}}.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism{{- '-' ~ theme_ctx.prism_theme -}}.min.css">
 {%- else -%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-coy.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism.min.css">
 {%- endif -%}
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
@@ -31,56 +31,90 @@
     <br>
     <br>
     {%- for archive in archives -%}
+    {%- if archive.tags | length != 0 and archive.tags[0].title == 'tweet' -%} 
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="modal" style="display:block;position:relative;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title">
+                                Tweet
+                                &nbsp;
+                                {%- if archive.sticky > 0 -%}
+                                <span style="background-color: red;">PIN</span>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-left">
+                                <img style="border-radius: 50%;width:10%;"
+                                    src="{{ 'static/favicon.ico' | to_static | safe }}">
+                                <span>{{ site.author }}</span>
+                                <span id="time-transfer">{{ archive.created }}</span>
+                            </p>
+                            <br>
+                            {{ archive.summary }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%- else -%}
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <div class="card text-white bg-primary mb-4">
                 <div class="card-header">
                     <a href="{{ archive.url | urlencode | safe }}" target="_blank">{{- archive.title -}}</a>
+                    &nbsp;
                     {%- if archive.sticky > 0 -%}
                     <span style="background-color: red;">PIN</span>
                     {%- endif -%}
-                </div>
-                <div class="card-body">
-                    <h4 class="card-body">
-                        tags:
-                        {%- for tag in archive.tags -%}
-                        <a href="{{ tag.url | urlencode | safe }}" style="background-color: #707b7c;">{{- tag.title -}}</a>
-                        {%- endfor -%}
-                    </h4>
-                    <h4 class="card-body">
-                        categories:
-                        {%- for category in archive.categories -%}
-                        <a href="{{ category.url | urlencode | safe }}" style="background-color: #707b7c;">{{- category.title -}}</a>
-                        {%- endfor -%}
-                    </h4>
-                    <p class="card-text">
-                        {{- archive.summary | safe -}}
-                    </p>
-                    <a class="card-link" href="{{ archive.url | urlencode | safe }}" target="_blank">Read</a>
-                    <br>
-                    <br>
-                    <div id="time-transfer" class="card-footer text-muted">{{- archive.created -}}</div>
-                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-body">
+                    tags:
+                    {%- for tag in archive.tags -%}
+                    <a href="{{ tag.url | urlencode | safe }}" style="background-color: #707b7c;">{{- tag.title -}}</a>
+                    {%- endfor -%}
+                </h4>
+                <h4 class="card-body">
+                    categories:
+                    {%- for category in archive.categories -%}
+                    <a href="{{ category.url | urlencode | safe }}" style="background-color: #707b7c;">{{- category.title -}}</a>
+                    {%- endfor -%}
+                </h4>
+                <p class="card-text">
+                    {{- archive.summary | safe -}}
+                </p>
+                <a class="card-link" href="{{ archive.url | urlencode | safe }}" target="_blank">Read</a>
+                <br>
+                <br>
+                <div id="time-transfer" class="card-footer text-muted">{{- archive.created -}}</div>
+            </div>
             </div>
         </div>
     </div>
-    {%- endfor -%}
-    <!-- transfer RFC time to human readable time -->
-    <script>
-        var time_elements = document.querySelectorAll("#time-transfer");
-        time_elements.forEach(element => {
-            element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
-                'zh-cn',
-                {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: 'numeric',
-                    minute: 'numeric'
-                }
-            );
-        });
-    </script>
+{%- endif -%}
+{%- endfor -%}
+<!-- transfer RFC time to human readable time -->
+<script>
+    var time_elements = document.querySelectorAll("#time-transfer");
+    time_elements.forEach(element => {
+        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
+            window.navigator.language,
+            {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            }
+        );
+    });
+</script>
 </div>
 {%- endblock -%}
