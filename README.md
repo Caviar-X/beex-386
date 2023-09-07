@@ -28,3 +28,5 @@ beex_meta中的tags第一位必须设置为`tweet`
 
 - 通过macro减少复用代码
 
+- 添加category.html
+
