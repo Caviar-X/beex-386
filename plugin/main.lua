@@ -21,15 +21,9 @@ local config = {
     enable_tweet = true,
 }
 
-
+--目前不需要设置其他字段
 function Theme_context(args)
-    args.context.theme_ctx = {
-        magic_cursor = config.magic_cursor,
-        custom_head = config.custom_head,
-        begin_year = config.begin_year,
-        prism_theme = config.prism_theme,
-        enable_tweet = config.enable_tweet
-    }
+    args.context.theme_ctx = config
     return args
 end
 

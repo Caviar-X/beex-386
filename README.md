@@ -12,6 +12,9 @@
 4. 编辑`main.lua`文件中的全局变量`config`
 5. 将favicon.ico放入static🗂中
 6. 愉快的开始写作吧
+## 注意事项
+
+- 主题不支持menus.top 只支持menus.main (排版格式相关，不计划也不会更改)
 
 ## Tweet
 
@@ -21,7 +24,7 @@ beex_meta中的tags第一位必须设置为`tweet`
 
 ## 目前bug/TODOs
 
-- 由于带了个点阵宋体，主题臃肿。尝试削减主题大小
+- 由于带了个点阵宋体，主题臃肿。尝试削减主题大小(目前已经由2MiB -> 820+ KiB)
 
-- 加入tag.html
+- 通过macro减少复用代码
 
