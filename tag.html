@@ -1,4 +1,5 @@
 {%- extends "layout.html" -%}
+{%- import "macros/render.html" as render -%}
 {%- block site_title -%}
     {{- tags[0].title }} | {{ site.title -}}
 {%- endblock -%}
@@ -12,89 +13,6 @@
         <p>Rendering finished.</p>
     </h1>
 </div>
-{%- for archive in tags[0].archives -%}
-{%- if archive.tags | length != 0 and archive.tags[0].title == 'tweet' -%} 
-<div class="row">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-        <div class="modal" style="display:block;position:relative;">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="modal-title">
-                            Tweet
-                            &nbsp;
-                            {%- if archive.sticky > 0 -%}
-                            <span style="background-color: red;">PIN</span>
-                            {%- endif -%}
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-left">
-                            <img style="border-radius: 50%;width:10%;"
-                                src="{{ 'static/favicon.ico' | to_static | safe }}">
-                            <span>{{ site.author }}</span>
-                            <span id="time-transfer">{{ archive.created }}</span>
-                        </p>
-                        <br>
-                        {{ archive.summary }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{%- else -%}
-<div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-        <div class="card text-white bg-primary mb-4">
-            <div class="card-header">
-                <a href="{{ archive.url | urlencode | safe }}" target="_blank">{{- archive.title -}}</a>
-                &nbsp;
-                {%- if archive.sticky > 0 -%}
-                <span style="background-color: red;">PIN</span>
-                {%- endif -%}
-        </div>
-        <div class="card-body">
-            <h4 class="card-body">
-                tags:
-                {%- for tag in archive.tags -%}
-                <a href="{{ tag.url | urlencode | safe }}" style="background-color: #707b7c;">{{- tag.title -}}</a>
-                {%- endfor -%}
-            </h4>
-            <h4 class="card-body">
-                categories:
-                {%- for category in archive.categories -%}
-                <a href="{{ category.url | urlencode | safe }}" style="background-color: #707b7c;">{{- category.title -}}</a>
-                {%- endfor -%}
-            </h4>
-            <p class="card-text">
-                {{- archive.summary | safe -}}
-            </p>
-            <a class="card-link" href="{{ archive.url | urlencode | safe }}" target="_blank">Read</a>
-            <br>
-            <br>
-            <div id="time-transfer" class="card-footer text-muted">{{- archive.created -}}</div>
-        </div>
-        </div>
-    </div>
-</div>
-{%- endif -%}
-{%- endfor -%}
-<script>
-    var time_elements = document.querySelectorAll("#time-transfer");
-    time_elements.forEach(element => {
-        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
-            window.navigator.language,
-            {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-            }
-        );
-    });
-</script>
+{{- render::render_archives(archives=tags[0].archives) -}}
+{{- render::render_time() -}}
 {%- endblock -%}

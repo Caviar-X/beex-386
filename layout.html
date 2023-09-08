@@ -52,8 +52,11 @@
         <br>
         <br>
         {%- block footer -%}
+        {%- if theme_ctx.theme_relate-%}
         <p class="text-center text-primary">自豪的使用<a href="http://www.telihai.com/archives/9027" target="_blank">beex</a>作为静态博客系统</p>
         <p class="text-primary text-center">Made by {{ site.author }} with LOVE</p>
+        <p class="text-primary text-center">主题:<a href="https://github.com/Caviar-X/beex-386" target="_blank">beex-386</a></p>
+        {%- endif -%}
         <p class="text-center">
         {%- if theme_ctx.begin_year -%}
         <span class="text-primary text-center">{{ theme_ctx.begin_year }}</span>

@@ -16,9 +16,13 @@ local config = {
 
     --prism.js主题名，具体可以参照prismjs.com 默认主题留空即可,
     prism_theme = '',
+    -- example: prism_theme = 'coy'
 
     --是否开启tweet,详见README.md
     enable_tweet = true,
+
+    --页脚是否显示主题&beex有关信息
+    theme_relate = true,
 }
 
 --目前不需要设置其他字段

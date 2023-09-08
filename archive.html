@@ -1,5 +1,5 @@
 {%- extends 'layout.html' -%}
-
+{%- import "macros/render.html" as render-%}
 {%- block html_head -%}
 <!--仅在首页和文章页面加载语法高亮和katex-->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@latest/prism.js"></script>
@@ -67,19 +67,5 @@
         </div>
     </div>
 </div>
-<script>
-    var time_elements = document.querySelectorAll("#time-transfer");
-    time_elements.forEach(element => {
-        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
-            window.navigator.language,
-            {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-            }
-        );
-    });
-</script>
+{{- render::render_time() -}}
 {%- endblock -%}
