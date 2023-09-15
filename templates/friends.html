@@ -1,0 +1,44 @@
+{%- extends 'layout.html' -%}
+{%- block site_title -%}
+友人账 | {{- site.title -}}
+{%- endblock -%}
+{%- block main_content -%}
+<div class="container">
+    <h1 class="text-console">
+        <p class="text-center"><img src="{{ 'static/fonts/terminator.svg' | to_static | safe }}" style="width: 16px;">&nbsp;Console</p>
+        <div class="console-inner">
+            <p>~ render $(ls site/friend-links)</p>
+            <p class="with-loading">Rendering</p>
+            <p>Rendering finished.</p>
+            <br>
+            {%- if theme_ctx.friends | length == 0 -%}
+            <p>{{- site.author -}}目前很孤独,没有朋友,快去联系他加上属于你的连接吧</p>
+            {%- else -%}
+            <p>共有{{- theme_ctx.friends | length -}}条连接</p>
+            <br>
+            {%- for friend in theme_ctx.friends -%}
+            <p>Friend / <a href="{{- friend.link | urlencode | safe -}}" target="_blank">{{- friend.label -}}</a>.md</p>
+            <div class="friend-description">
+                {{- friend.description | safe -}}
+            </div>
+            {%- endfor -%}
+            {%- endif -%}
+        </div>
+    </h1>
+</div>
+{%- if archive.content | length > 0-%}
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="page-header">
+            <h1 class="text-center text-primary">{{- archive.title -}}</h1>
+        </div>
+        <div class="jumbotron">
+            {{ archive.content | safe }}
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+{%-endif-%}
+{%- endblock -%}

@@ -30,25 +30,17 @@ local config = {
     -- description: 友链简介(应该支持html)
     friends = {
         {
-            label = "特厉害",
-            link = "http://www.telihai.com/",
-            description = "真的很厉害"
+            label = "example",
+            link = "http://www.example.com/",
+            description = "example description"
         },
     },
     --联系方式
-    --icon: 详见./static/social
+    --icon: 详见./static/social，icon字段在html中将会以{{icon}}.svg的形式展现
     contacts = {
         {
-            icon = "reddit",
-            url = "https://www.reddit.com/user/ConnectToInternet"
-        },
-        {
-            icon = "matrix",
-            url = "https://matrix.to/#/@caviar-x:mozilla.org"
-        },
-        {
             icon = "email",
-            url = "mailto:caviarx@163.com"
+            url = "mailto:example@example.com"
         }
     }
 }

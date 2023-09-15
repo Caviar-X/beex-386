@@ -457,7 +457,11 @@ h1.text-console {
   border-color: white;
   border-width: 2ch;
 }
-
+h1 .console-inner {
+  border: 0.875px solid green;
+  padding-bottom: 1.5ch;
+  padding-top: 1.5ch;
+}
 h1 .text-muted,
 h2 .text-muted,
 .h1 .text-muted,

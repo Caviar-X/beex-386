@@ -24,7 +24,9 @@
                             <span id="time-transfer">{{ archive.created }}</span>
                         </p>
                         <br>
-                        {{ archive.summary }}
+                        <div class="tweet-content">
+                        {{ archive.summary | safe }}
+                        </div>
                     </div>
                 </div>
             </div>

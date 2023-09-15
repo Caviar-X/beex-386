@@ -5,6 +5,7 @@
     <h1 class="text-console">
         <p class="text-center"><img src="{{ 'static/fonts/terminator.svg' | to_static | safe }}"
                 style="width: 16px;">&nbsp;Console</p>
+        <div class="console-inner">
         <p>~ cat site/desc.md</p>
         <p>Welcome!</p>
         <p>This site is created by {{ site.author }} with LOVE</p>
@@ -12,6 +13,7 @@
         {%- for tag in tags -%}
         <p>- <a href="{{ tag.url | urlencode | safe }}" target="_blank">{{- tag.title -}}</a></p>
         {%- endfor -%}
+        </div>
     </h1>
     <br>
     <br>
