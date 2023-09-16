@@ -17,7 +17,7 @@
             <p>共有{{- theme_ctx.friends | length -}}条连接</p>
             <br>
             {%- for friend in theme_ctx.friends -%}
-            <p>Friend / <a href="{{- friend.link | urlencode | safe -}}" target="_blank">{{- friend.label -}}</a>.md</p>
+            <p>Friend / <a href="{{- friend.link | safe -}}" target="_blank">{{- friend.label -}}</a>.md</p>
             <div class="friend-description">
                 {{- friend.description | safe -}}
             </div>
