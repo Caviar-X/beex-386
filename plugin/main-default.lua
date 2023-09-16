@@ -24,6 +24,8 @@ local config = {
     --页脚是否显示主题&beex有关信息
     theme_relate = true,
 
+    --文章过期警告日期(若不启用请设置为-1)
+    outdate_day = -1,
     --友人账
     -- label:友链名称
     -- link:友链url
@@ -35,6 +37,7 @@ local config = {
             description = "example description"
         },
     },
+
     --联系方式
     --icon: 详见./static/social，icon字段在html中将会以{{icon}}.svg的形式展现
     contacts = {
@@ -50,6 +53,5 @@ function Theme_context(args)
     args.context.theme_ctx = config
     return args
 end
-
 
 beex:add_filter("gen_before_render_html", "Theme_context")

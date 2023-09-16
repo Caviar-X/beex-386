@@ -77,7 +77,8 @@
 {%- endfor -%}
 {%- endmacro render_archives -%}
 
-{%- macro render_time() -%}
+{%- macro render_js(day,created="") -%}
+{%- if day < 0 or created == "" -%}
 <script>
     var time_elements = document.querySelectorAll("#time-transfer");
     time_elements.forEach(element => {
@@ -93,4 +94,34 @@
         );
     });
 </script>
-{%- endmacro render_time -%}
+{%- else -%}
+<script>
+    var time_elements = document.querySelectorAll("#time-transfer");
+    time_elements.forEach(element => {
+        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
+            window.navigator.language,
+            {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            }
+        );
+    });
+    var day = '{{- day -}}';
+    var created = '{{- created -}}'
+    if (time_elements.length === 1) {
+        var archive_created = new Date(created);
+        var now = new Date(Date.now());
+        if (now.getTime() - archive_created.getTime() >= (24*60*60*1000) * parseInt(day)) {
+            document.getElementById("outdate").innerHTML = `该文章已过期${Math.floor((now.getTime() - archive_created.getTime()) / (24*60*60*1000))}天，请注意文章的时效性`;
+        } else {
+            document.getElementById("outdate").style.display = 'none';
+        }
+
+    }
+
+</script>
+{%- endif -%}
+{%- endmacro render_js -%}

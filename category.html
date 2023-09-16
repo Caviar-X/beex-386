@@ -22,5 +22,5 @@
 <br>
 <br>
 {{- render::render_archives(archives=categories[0].archives) -}}
-{{- render::render_time() -}}
+{{- render::render_js(day=theme_ctx.outdate_day) -}}
 {%- endblock -%}

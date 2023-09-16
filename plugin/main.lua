@@ -24,6 +24,9 @@ local config = {
     --页脚是否显示主题&beex有关信息
     theme_relate = true,
 
+    --文章过期警告日期(若不启用请设置为-1)
+    outdate_day = 100,
+
     --友人账
     -- label:友链名称
     -- link:友链url

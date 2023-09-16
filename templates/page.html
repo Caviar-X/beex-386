@@ -24,7 +24,8 @@
         <div class="page-header">
             <h1 class="text-center text-primary">{{- archive.title -}}</h1>
         </div>
-        <div class="jumbotron">
+        <div class="jumbotron" id="archive_content">
+            <h1 class="text-warning" id="outdate"></h1>
             {{ archive.content | safe }}
             <br>
             <br>

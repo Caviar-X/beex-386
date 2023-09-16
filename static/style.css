@@ -451,6 +451,10 @@ h2,
   color: #000000;
 }
 
+h1.text-warning {
+  background: #aa0000;
+}
+
 h1.text-console {
   background: #000000;
   color: green;

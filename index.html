@@ -20,6 +20,6 @@
     <br>
     <br>
     {{- render::render_archives(archives=archives) -}}
-    {{- render::render_time() -}}
+    {{- render::render_js(day=theme_ctx.outdate_day) -}}
 </div>
 {%- endblock -%}
