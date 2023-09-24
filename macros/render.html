@@ -78,7 +78,6 @@
 {%- endmacro render_archives -%}
 
 {%- macro render_js(day,created="") -%}
-{%- if day < 0 or created == "" -%}
 <script>
     var time_elements = document.querySelectorAll("#time-transfer");
     time_elements.forEach(element => {
@@ -93,22 +92,7 @@
             }
         );
     });
-</script>
-{%- else -%}
-<script>
-    var time_elements = document.querySelectorAll("#time-transfer");
-    time_elements.forEach(element => {
-        element.innerHTML = new Date(element.innerHTML).toLocaleDateString(
-            window.navigator.language,
-            {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-            }
-        );
-    });
+    {%- if day >= 0 and created == "" -%}
     var day = '{{- day -}}';
     var created = '{{- created -}}'
     if (time_elements.length === 1) {
@@ -119,9 +103,7 @@
         } else {
             document.getElementById("outdate").style.display = 'none';
         }
-
     }
-
+    {%- endif -%}
 </script>
-{%- endif -%}
 {%- endmacro render_js -%}

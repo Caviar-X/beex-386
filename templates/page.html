@@ -1,17 +1,4 @@
-{%- extends 'layout.html' -%}
-
-{%- block html_head -%}
-<!--仅在首页和文章页面加载语法高亮和katex-->
-<script src="https://cdn.jsdelivr.net/npm/prismjs@latest/prism.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@latest/plugins/autoloader/prism-autoloader.min.js"></script>
-{%- if theme_ctx.prism_theme -%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism{{- '-' ~ theme_ctx.prism_theme -}}.min.css">
-{%- else -%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@latest/themes/prism.min.css">
-{%- endif -%}
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-{%- endblock -%}
+{%- extends 'archive.html' -%}
 
 {%- block site_title -%}
 {{- archive.title -}}

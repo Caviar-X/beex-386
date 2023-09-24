@@ -37,6 +37,11 @@ local config = {
             link = "http://www.telihai.com/",
             description = "真的很厉害"
         },
+        {
+            label = "gjz010",
+            link = "https://www.gjz010.com/",
+            description = "没有什么信息"
+        }
     },
     --联系方式
     --icon: 详见./static/social

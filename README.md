@@ -4,6 +4,8 @@
 
 可能是已知的第一个第三方主题。
 
+主题目前大小为1.4MiB
+
 ## 如何使用？
 
 1. 去[这里](http://www.telihai.com/archives/9027/)下载beex
@@ -34,6 +36,10 @@ template: friends.html
 ## 页脚联系方式
 
 详见./static/social，icon字段在html中将会以{{icon}}.svg的形式展现
+
+## 鸣谢
+
+[Simple Pixel Icon Pack](https://github.com/PaulLesur/plasma-pixel-icon-theme)
 
 ## 目前bug/TODOs
 
