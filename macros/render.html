@@ -104,6 +104,8 @@
             document.getElementById("outdate").style.display = 'none';
         }
     }
+    {%- else -%}
+    document.getElementById("outdate").style.display = 'none';
     {%- endif -%}
 </script>
 {%- endmacro render_js -%}

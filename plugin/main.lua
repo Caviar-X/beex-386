@@ -41,7 +41,12 @@ local config = {
             label = "gjz010",
             link = "https://www.gjz010.com/",
             description = "没有什么信息"
-        }
+        },
+        {
+            label = "Alias Qi",
+            link = "https://alias.qliphoth.tech/",
+            description = "力量恢复中"
+        },
     },
     --联系方式
     --icon: 详见./static/social
@@ -57,6 +62,10 @@ local config = {
         {
             icon = "email",
             url = "mailto:caviarx@163.com"
+        },
+        {
+            icon = "github",
+            url = "https://github.com/Caviar-X"
         }
     }
 }

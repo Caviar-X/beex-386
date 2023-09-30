@@ -56,7 +56,7 @@
         {%- if theme_ctx.contacts | length > 0 -%}
         <p class="text-center">
         {%- for contact in theme_ctx.contacts -%}
-        <a href="{{- contact.url | safe -}}" target="_blank"><img style="width: 32px;" src="{{- 'static/social/' ~ contact.icon ~ '.svg' | to_static | safe -}}"></a>
+        <a class="social" href="{{- contact.url | safe -}}" target="_blank"><img style="width: 32px;" src="{{- 'static/social/' ~ contact.icon ~ '.svg' | to_static | safe -}}"></a>
         &nbsp;
         {%- endfor -%}
         </p>

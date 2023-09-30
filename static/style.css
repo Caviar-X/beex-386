@@ -218,7 +218,9 @@ a:hover {
   color: #bbbbbb;
   background-color: #000000;
 }
-
+a.social:hover {
+  background-color: transparent;
+}
 em {
   font-style: normal;
 }

@@ -41,6 +41,8 @@ template: friends.html
 
 [Simple Pixel Icon Pack](https://github.com/PaulLesur/plasma-pixel-icon-theme)
 
+[Pixel Icon Library](https://github.com/hackernoon/pixel-icon-library)
+
 ## 目前bug/TODOs
 
 - 由于带了个点阵宋体，主题臃肿。尝试削减主题大小(目前已经由2MiB -> 820+ KiB)(macro复用)
